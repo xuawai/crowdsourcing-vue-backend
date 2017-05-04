@@ -5,20 +5,34 @@ package estimation.bean;
  */
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Language;
+
+import java.util.List;
 
 @Document(collection = "requirement")
 public class Requirement {
     @Id
-    private Long id;
+    private String id;
 
     private Description description;
 
-    public Long getId() {
-        return id;
+    private List<Transaction> transactions;
+
+    private List<Entity> entities;
+
+    public List<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setId(Long id) {
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public String getId() {
+        return id;
+
+    }
+
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -28,5 +42,13 @@ public class Requirement {
 
     public void setDescription(Description description) {
         this.description = description;
+    }
+
+    public List<Entity> getEntities() {
+        return entities;
+    }
+
+    public void setEntities(List<Entity> entities) {
+        this.entities = entities;
     }
 }

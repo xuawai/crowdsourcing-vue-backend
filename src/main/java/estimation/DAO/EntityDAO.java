@@ -1,7 +1,8 @@
 package estimation.DAO;
 
-import estimation.bean.Description;
+import estimation.bean.Entity;
 import estimation.bean.Requirement;
+import estimation.bean.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -10,16 +11,24 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by xuawai on 03/05/2017.
+ * Created by xuawai on 04/05/2017.
  */
 @Repository
-public class DescriptionDAO {
+public class EntityDAO {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public void add(String id, Description description){
+    public void add(String id, Entity entity){
         Query query = new Query(Criteria.where("_id").is(id));
-        Update update = Update.update("description.$.projectName", description.getProjectName()).update("description.$.projectDescription", description.getProjectDescription());
+        Update update = new Update();
+        update.addToSet("entities", entity);
+        mongoTemplate.upsert(query, update, Requirement.class);
+    }
+
+    public void deleteArray(String id, String key){
+        Query query = new Query(Criteria.where("_id").is(id));
+        Update update = new Update();
+        update.unset(key);
         mongoTemplate.upsert(query, update, Requirement.class);
     }
 }

@@ -11,33 +11,16 @@ import net.sf.json.JSONObject;
  * Created by xuawai on 03/05/2017.
  */
 @RestController
-//@RequestMapping(value="/estimation")
+@RequestMapping(value="/estimation")
 public class RequirementController {
     @Autowired
     private RequirementService requirementService;
 
-    @Autowired
-    private DescriptionService descriptionService;
-
+    //增加一个新需求
     @RequestMapping(value = "/addRequirement",method = RequestMethod.POST)
     public void addRequirement() {
-        requirementService.add(null);
+        requirementService.add();
     }
 
-    //@GetMapping(value = "/test")
-    @RequestMapping(value = "/test2")
-    public String test() {
 
-        return "success";
-    }
-
-    @RequestMapping(value = "/addDescription/{id}",method = RequestMethod.POST)
-    public void addDescription(@RequestBody JSONObject jsonObject, @PathVariable String id) {
-        String projectName = jsonObject.getString("projectName");
-        String projectDescription = jsonObject.getString("projectDescription");
-        Description description = new Description();
-        description.setProjectName(projectName);
-        description.setProjectDescription(projectDescription);
-        descriptionService.add(id, description);
-    }
 }
