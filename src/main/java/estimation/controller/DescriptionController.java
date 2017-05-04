@@ -27,4 +27,9 @@ public class DescriptionController {
         description.setProjectDescription(projectDescription);
         descriptionService.add(id, description);
     }
+
+    @RequestMapping(value = "/addDescription1/{id}",method = RequestMethod.POST)
+    public void addDescription1(@PathVariable String id) {
+
+    }
 }

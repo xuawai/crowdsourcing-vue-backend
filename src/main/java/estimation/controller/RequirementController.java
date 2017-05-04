@@ -17,9 +17,10 @@ public class RequirementController {
     private RequirementService requirementService;
 
     //增加一个新需求
-    @RequestMapping(value = "/addRequirement",method = RequestMethod.POST)
-    public void addRequirement() {
+    @RequestMapping(value = "/addRequirement",method = RequestMethod.GET)
+    public String addRequirement() {
         requirementService.add();
+        return "success";
     }
 
 
