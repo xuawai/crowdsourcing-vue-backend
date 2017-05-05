@@ -28,8 +28,8 @@ public class DescriptionController {
         descriptionService.add(id, description);
     }
 
-    @RequestMapping(value = "/addDescription1/{id}",method = RequestMethod.POST)
-    public void addDescription1(@PathVariable String id) {
+    @RequestMapping(value = "/test/",method = RequestMethod.POST)
+    public void addDescription1() {
 
     }
 }
