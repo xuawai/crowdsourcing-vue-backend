@@ -2,6 +2,7 @@ package estimation.controller;
 
 import estimation.DAO.RequirementDAO;
 import estimation.bean.Description;
+import estimation.bean.Requirement;
 import estimation.service.DescriptionService;
 import estimation.service.RequirementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,12 @@ public class RequirementController {
     public String addRequirement() {
         requirementService.add();
         return "success";
+    }
+
+    //返回一条记录
+    @RequestMapping(value = "/getRequirement/{id}",method = RequestMethod.GET)
+    public Requirement getRequirement(@PathVariable String id) {
+        return requirementService.getRequirement(id);
     }
 
     @RequestMapping(value = "/test",method = RequestMethod.POST)

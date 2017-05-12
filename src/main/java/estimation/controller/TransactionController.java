@@ -48,7 +48,7 @@ public class TransactionController {
                 String logicalFileName = concerningDataSetObject.getString("logicalFileName");
                 String logicalFieldName = concerningDataSetObject.getString("logicalFieldName");
                 concerningDataSet.setLogicalFileName(logicalFileName);
-                concerningDataSet.setLogicalFieldName(logicalFileName);
+                concerningDataSet.setLogicalFieldName(logicalFieldName);
                 concerningDataSets.add(concerningDataSet);
             }
             //--concerningDataSet level

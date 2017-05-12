@@ -4,6 +4,8 @@ import estimation.bean.Requirement;
 import estimation.repository.RequirementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,5 +19,9 @@ public class RequirementDAO {
 
     public void add(Requirement requirement){
         this.mongoTemplate.insert(requirement);
+    }
+
+    public Requirement getRequirement(String id){
+        return mongoTemplate.findOne(new Query(Criteria.where("_id").is(id)),Requirement.class);
     }
 }

@@ -64,4 +64,8 @@ public class RequirementService {
 
         this.requirementDAO.add(requirement);
     }
+
+    public Requirement getRequirement(String id){
+        return requirementDAO.getRequirement(id);
+    }
 }
