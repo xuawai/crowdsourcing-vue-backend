@@ -75,6 +75,8 @@ public class EntityService {
             }
             entity.setLogicalFieldName(fields.toString());
 
+            entity.setRETs(null);
+
             entities.add(entity);
         }
 
@@ -82,5 +84,12 @@ public class EntityService {
 
 
         return entities;
+    }
+
+
+    //读取某需求所有的entity信息
+    public List<Entity> getAllEntities(String id){
+        Requirement requirement = this.requirementDAO.getRequirement(id);
+        return requirement.getEntities();
     }
 }
