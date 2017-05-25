@@ -7,40 +7,50 @@ import java.util.List;
  */
 public class Transaction {
 
-    private String transcationName;
+    private String transactionName;
 
-    private String transcationType;
+    private String transactionType;
 
-    private String transcationDescription;
+    private String transactionDescription;
 
     private List<Step> steps;
+
+    public String countRepeatField;
+
+    public String getCountRepeatField() {
+        return countRepeatField;
+    }
+
+    public void setCountRepeatField(String countRepeatField) {
+        this.countRepeatField = countRepeatField;
+    }
 
     private String regulationOfSameLogic;
 
     private String regulationOfReturningStatus;
 
-    public String getTranscationName() {
-        return transcationName;
+    public String getTransactionName() {
+        return transactionName;
     }
 
-    public void setTranscationName(String transcationName) {
-        this.transcationName = transcationName;
+    public void setTransactionName(String transactionName) {
+        this.transactionName = transactionName;
     }
 
-    public String getTranscationType() {
-        return transcationType;
+    public String getTransactionType() {
+        return transactionType;
     }
 
-    public void setTranscationType(String transcationType) {
-        this.transcationType = transcationType;
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
     }
 
-    public String getTranscationDescription() {
-        return transcationDescription;
+    public String getTransactionDescription() {
+        return transactionDescription;
     }
 
-    public void setTranscationDescription(String transcationDescription) {
-        this.transcationDescription = transcationDescription;
+    public void setTransactionDescription(String transactionDescription) {
+        this.transactionDescription = transactionDescription;
     }
 
     public List<Step> getSteps() {

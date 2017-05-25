@@ -15,8 +15,10 @@ public class FPController {
     @Autowired
     FPService fpService;
 
-    @RequestMapping(value = "/ufp/{id}", method = RequestMethod.POST)
-    public void calculateUFP( @PathVariable String id) {
-        fpService.calculateUFP(id);
+    @RequestMapping(value = "/ufp/{id}", method = RequestMethod.GET)
+    public int calculateUFP( @PathVariable String id) {
+
+        return fpService.calculateUFP(id);
+
     }
 }

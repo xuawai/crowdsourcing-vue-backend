@@ -30,6 +30,7 @@ public class TransactionController {
         String transactionName = jsonObject.getString("transactionName");
         String transactionType = jsonObject.getString("transactionType");
         String transactionDescription = jsonObject.getString("transactionDescription");
+        String countRepeatField = jsonObject.getString("countRepeatField");
         String regulationOfSameLogic = jsonObject.getString("regulationOfSameLogic");
         String regulationOfReturningStatus = jsonObject.getString("regulationOfReturningStatus");
         List<Step> steps = new ArrayList<Step>();
@@ -58,9 +59,10 @@ public class TransactionController {
         }
         //step level--
 
-        transaction.setTranscationName(transactionName);
-        transaction.setTranscationType(transactionType);
-        transaction.setTranscationDescription(transactionDescription);
+        transaction.setTransactionName(transactionName);
+        transaction.setTransactionType(transactionType);
+        transaction.setTransactionDescription(transactionDescription);
+        transaction.setCountRepeatField(countRepeatField);
         transaction.setRegulationOfSameLogic(regulationOfSameLogic);
         transaction.setRegulationOfReturningStatus(regulationOfReturningStatus);
         transaction.setSteps(steps);

@@ -19,7 +19,7 @@ public class FPService {
     @Autowired
     TransactionService transactionService;
 
-    public void calculateUFP(String id){
+    public int calculateUFP(String id){
 
 
         //统计数据功能的UFP
@@ -76,8 +76,10 @@ public class FPService {
                     }
                 }
             }
+            int countRepeatField = Integer.parseInt(transaction.getCountRepeatField());
             int regulationOfSameLogic = Integer.parseInt(transaction.getRegulationOfSameLogic());
             int regulationOfReturningStatus = Integer.parseInt(transaction.getRegulationOfReturningStatus());
+
 
 
             //统计复杂度以及UFP
@@ -88,20 +90,21 @@ public class FPService {
             for(Map.Entry<String,Set<String>> entry: fileMap.entrySet()){
                 transactionDET  += entry.getValue().size();
             }
+            transactionDET -= countRepeatField;
             transactionDET += regulationOfSameLogic;
             transactionDET += regulationOfReturningStatus;
             //transaction type
-            String transcationType = transaction.getTranscationType();
+            String transcationType = transaction.getTransactionType();
 
             //计算复杂度以及UFP
             transcationFunctionUFP += UFP4TransactionFunction(transactionFTR, transactionDET, transcationType);
-            System.out.println("transaction ufp:" + transcationFunctionUFP);
+            System.out.println(transactionDET+"transactionname:"+transaction.getTransactionName()+"transaction ufp:" + transcationFunctionUFP);
         }
 
 
         int UFP = dataFunctionUFP + transcationFunctionUFP;
         System.out.println("ufp:"+UFP);
-
+        return UFP;
 
 
     }

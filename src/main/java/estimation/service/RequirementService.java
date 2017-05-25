@@ -16,7 +16,7 @@ public class RequirementService {
     @Autowired
     private RequirementDAO requirementDAO;
 
-    public void add(){
+    public String add(){
 
 
         //--requirement level
@@ -63,9 +63,15 @@ public class RequirementService {
 
 
         this.requirementDAO.add(requirement);
+        //这里应该修改为，如果插入成功，则返回id
+        return id;
     }
 
     public Requirement getRequirement(String id){
         return requirementDAO.getRequirement(id);
+    }
+
+    public List<Requirement> getAllRequirements(){
+        return requirementDAO.getAllRequirements();
     }
 }

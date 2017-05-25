@@ -19,7 +19,8 @@ public class DescriptionDAO {
 
     public void add(String id, Description description){
         Query query = new Query(Criteria.where("_id").is(id));
-        Update update = Update.update("description.$.projectName", description.getProjectName()).update("description.$.projectDescription", description.getProjectDescription());
+        //如果用两个update，第一条信息插不进去。不知道原因，可以查看一下API文档，为什么要先update再set。现在是快十二点了先睡觉。
+        Update update = Update.update("description.$.projectName", description.getProjectName()).set("description.$.projectDescription", description.getProjectDescription());
         mongoTemplate.upsert(query, update, Requirement.class);
     }
 }

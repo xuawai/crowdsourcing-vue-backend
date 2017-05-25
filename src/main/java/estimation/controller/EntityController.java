@@ -31,12 +31,12 @@ public class EntityController {
         String logicalFileType = jsonObject.getString("logicalFileType");
         List<RET> RETs = new ArrayList<RET>();
         //--RET level
-        JSONArray stepsArray = jsonObject.getJSONArray("RETs");
+        JSONArray stepsArray = jsonObject.getJSONArray("rets");
         for (int i = 0; i < stepsArray.size(); i++) {
             RET ret = new RET();
             JSONObject retObject = (JSONObject) stepsArray.get(i);
-            String RETName = retObject.getString("RETName");
-            String RETField = retObject.getString("RETField");
+            String RETName = retObject.getString("retname");
+            String RETField = retObject.getString("retfield");
             ret.setRETName(RETName);
             ret.setRETField(RETField);
             RETs.add(ret);
