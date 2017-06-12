@@ -21,4 +21,16 @@ public class FPController {
         return fpService.calculateUFP(id);
 
     }
+
+    @RequestMapping(value = "/fp/{id}", method = RequestMethod.GET)
+    public int calculateFP(@PathVariable String id, @RequestBody JSONObject jsonObject){
+        int ufp = jsonObject.getInt("ufp");
+        //其他参数，如语言类型等等
+        String language = jsonObject.getString("language");
+
+
+        
+        int fp = 100;
+        return fp;
+    }
 }
