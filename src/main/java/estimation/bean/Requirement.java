@@ -19,6 +19,8 @@ public class Requirement {
 
     private List<Entity> entities;
 
+    private VAF vaf;
+
     public List<Transaction> getTransactions() {
         return transactions;
     }
@@ -50,5 +52,13 @@ public class Requirement {
 
     public void setEntities(List<Entity> entities) {
         this.entities = entities;
+    }
+
+    public VAF getVaf() {
+        return vaf;
+    }
+
+    public void setVaf(VAF vaf) {
+        this.vaf = vaf;
     }
 }

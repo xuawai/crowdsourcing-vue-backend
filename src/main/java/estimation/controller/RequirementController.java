@@ -38,10 +38,5 @@ public class RequirementController {
     public List<Requirement> getAllRequirements() {
         return requirementService.getAllRequirements();
     }
-
-
-    @RequestMapping(value = "/test",method = RequestMethod.POST)
-    public String addDescription1() {
-        return "123";
-    }
+    
 }

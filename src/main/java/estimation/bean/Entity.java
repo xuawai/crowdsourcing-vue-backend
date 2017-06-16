@@ -11,7 +11,7 @@ public class Entity {
 
     private String logicalFieldName;
 
-    //前几个字母都是大写的字段存入momgo中，会变成rets。RET内部的两个逻辑字段也有同样的情况。不知道原因。
+    //前几个字母都是大写的字段存入momgo中，读取的时候会变成rets。RET内部的两个逻辑字段也有同样的情况。不知道原因。
     private List<RET> RETs;
 
     private String logicalFileType;
