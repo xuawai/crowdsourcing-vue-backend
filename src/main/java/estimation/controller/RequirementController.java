@@ -38,5 +38,5 @@ public class RequirementController {
     public List<Requirement> getAllRequirements() {
         return requirementService.getAllRequirements();
     }
-    
+
 }

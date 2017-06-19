@@ -37,8 +37,48 @@ public class FPController {
         String SCED = jsonObject.getString("SCED");
 
         //算法
+        double afp = ufp;
+        // Development Type
+        if(developmentType.equalsIgnoreCase("New Development")){
+            afp = afp * 0.857;
+        }else if(developmentType.equalsIgnoreCase("Enhancement")){
+            afp = afp * 0.858;
+        }else if(developmentType.equalsIgnoreCase("Re-development")){
+            afp = afp * 0.863;
+        }
+        System.out.println("Adjusted by development type:"+afp);
+        // Development Platform
+        if(developmentPlatform.equalsIgnoreCase("PC")){
+            afp = afp * 0.61;
+        }else if(developmentPlatform.equalsIgnoreCase("MR")){
+            afp = afp * 1.01;
+        }else if(developmentPlatform.equalsIgnoreCase("MF")){
+            afp = afp * 1.06;
+        }
+        System.out.println("Adjusted by development platform:"+afp);
+        // Language Type
+        if(languageType.equalsIgnoreCase("3GL")){
+            afp = afp * 1.06;
+        }else if(languageType.equalsIgnoreCase("4GL")){
+            afp = afp * 0.87;
+        }
+        System.out.println("Adjusted by language type:"+afp);
 
-        int fp = 100;
-        return fp;
+        // COCOMO Cost Driver
+        double COCOMOKFs[] = {1,1,1,1};
+        COCOMOKFs[0] = Double.parseDouble(RELY);
+        COCOMOKFs[1] = Double.parseDouble(CPLX);
+        COCOMOKFs[2] = Double.parseDouble(TIME);
+        COCOMOKFs[3] = Double.parseDouble(SCED);
+        for(int i=0;i<4;i++){
+            if(COCOMOKFs[i] > 0 && COCOMOKFs[i] != Double.NaN){
+                afp = afp * COCOMOKFs[i];
+            }
+        }
+        System.out.println("Adjusted by cocomo driver:"+afp);
+
+        return (int)afp;
+
+        
     }
 }
